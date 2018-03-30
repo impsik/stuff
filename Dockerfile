@@ -15,6 +15,7 @@ TOMCAT_VERSION=$(wget -q -O - http://www.eu.apache.org/dist/tomcat/tomcat-8/ | g
 wget -q http://archive.apache.org/dist/tomcat/tomcat-8/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz; \
 mkdir -p /opt/tomcat; \
 tar xf apache-tomcat-$TOMCAT_VERSION.tar.gz -C /opt/tomcat --strip-components=1; \
+rm -f apache-tomcat-$TOMCAT_VERSION.tar.gz
 }
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
