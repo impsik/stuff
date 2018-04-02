@@ -1,0 +1,6 @@
+Backup whole database
+docker exec -ti 110a5da92914 sh -c 'pg_dumpall -U postgres' > /tmp/applicaiton.sql
+
+Install newr postgre, 10.x for example.
+docker run -d -e POSTGRES_PASSWORD=whatever -p 5432:5432 -v application-postgre10:/var/lib/postgresql/data postgres:10.3
+docker exec -i 334dbd9e160a psql -Upostgres < /tmp/application.sql
