@@ -3,7 +3,7 @@ ENV CATALINA_HOME /opt/tomcat
 ENV JAVA_HOME=/usr/lib/jvm/default-jvm
 RUN apk add --no-cache openjdk8-jre=8.151.12-r0 && ln -sf "${JAVA_HOME}/bin/"* "/usr/bin/"
 RUN  { set -eux;\
-TOMCAT_VERSION=$(wget -q -O - http://www.eu.apache.org/dist/tomcat/tomcat-8/ | grep -E -o "8\.[0\.]+.[0-9]+" | uniq ); \
+TOMCAT_VERSION=$(wget -q -O - http://www.eu.apache.org/dist/tomcat/tomcat-8/ | grep -E -o "8\.[0\.]+.[0-9]+" | uniq | tail -1); \
 wget -q http://archive.apache.org/dist/tomcat/tomcat-8/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz; \
 mkdir -p /opt/tomcat; \
 tar xf apache-tomcat-$TOMCAT_VERSION.tar.gz -C /opt/tomcat --strip-components=1; \
