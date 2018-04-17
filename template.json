@@ -1,0 +1,141 @@
+[
+{
+"type": "container",
+"title": "Tomcat",
+"description": "RKAS custom tomcat",
+"categories": [
+"webserver"
+],
+"platform": "linux",
+"logo": "http://tomcat.apache.org/res/images/tomcat.png",
+"image": "rkastomcat:latest",
+"ports": [
+"8080/tcp"
+],
+"volumes": [
+"/opt/tomcat/webapps"
+]
+},
+  {
+    "type": "container",
+    "title": "Nginx",
+    "description": "High performance web server",
+    "categories": ["webserver"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/nginx.png",
+    "image": "nginx:latest",
+    "ports": [
+      "80/tcp",
+      "443/tcp"
+    ],
+    "volumes": ["/etc/nginx", "/usr/share/nginx/html"]
+  },
+  {
+    "type": "container",
+    "title": "Httpd",
+    "description": "Open-source HTTP server",
+    "categories": ["webserver"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/httpd.png",
+    "image": "httpd:latest",
+    "ports": [
+      "80/tcp"
+    ],
+    "volumes": ["/usr/local/apache2/htdocs/"]
+  },
+  {
+    "type": "container",
+    "title": "MySQL",
+    "description": "The most popular open-source database",
+    "categories": ["database"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/mysql.png",
+    "image": "mysql:latest",
+    "env": [
+      {
+        "name": "MYSQL_ROOT_PASSWORD",
+        "label": "Root password"
+      }
+    ],
+    "ports": [
+      "3306/tcp"
+    ],
+    "volumes": ["/var/lib/mysql"]
+  },
+  {
+    "type": "container",
+    "title": "PostgreSQL",
+    "description": "The most advanced open-source database",
+    "categories": ["database"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/postgres.png",
+    "image": "postgres:latest",
+    "env": [
+      {
+        "name": "POSTGRES_USER",
+        "label": "Superuser"
+      },
+      {
+        "name": "POSTGRES_PASSWORD",
+        "label": "Superuser password"
+      }
+    ],
+    "ports": [
+      "5432/tcp"
+    ],
+    "volumes": ["/var/lib/postgresql/data"]
+  },
+  {
+    "type": "container",
+    "title": "Gitlab CE",
+    "description": "Open-source end-to-end software development platform",
+    "note": "Default username is <b>root</b>. Check the <a href=\"https://docs.gitlab.com/omnibus/docker/README.html#after-starting-a-container\" target=\"_blank\">Gitlab documentation</a> to get started.",
+    "categories": ["development", "project-management"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/gitlab_ce.png",
+    "image": "gitlab/gitlab-ce:latest",
+    "ports": [
+      "80/tcp",
+      "443/tcp",
+      "22/tcp"
+    ],
+    "volumes": [
+      { "container": "/etc/gitlab" },
+      { "container": "/var/log/gitlab" },
+      { "container": "/var/opt/gitlab" }
+    ]
+  },
+  {
+    "type": "container",
+    "title": "Drupal",
+    "description": "Open-source content management framework",
+    "categories": ["CMS"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/drupal.png",
+    "image": "drupal:latest",
+    "ports": [
+      "80/tcp"
+    ],
+    "volumes": ["/var/www/html"]
+  },
+  {
+    "type": "container",
+    "title": "Jenkins",
+    "description": "Open-source continuous integration tool",
+    "categories": ["continuous-integration"],
+    "platform": "linux",
+    "logo": "https://cloudinovasi.id/assets/img/logos/jenkins.png",
+    "image": "jenkins/jenkins:lts",
+    "ports": [
+      "8080/tcp",
+      "50000/tcp"
+    ],
+    "env": [
+      {
+        "name": "JENKINS_OPTS",
+        "label": "Jenkins options"
+      }
+    ],
+    "volumes": ["/var/jenkins_home"]
+  }
+]
